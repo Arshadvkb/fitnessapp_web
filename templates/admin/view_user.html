@@ -19,7 +19,7 @@ VIEW USER
       {% for i in data %}
     <tr>
       <td>&nbsp;{{ forloop.counter }}</td>
-      <td>&nbsp;{{ i.image.url }}</td>
+      <td>&nbsp;<img height="100px" width="100px" src="{{ i.image.url }}" alt="" srcset=""></td>
       <td>&nbsp;{{ i.name }}</td>
       <td>&nbsp;{{ i.phone  }}</td>
       <td>&nbsp;{{ i.email }}</td>

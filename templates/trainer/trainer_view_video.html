@@ -1,0 +1,88 @@
+{% extends 'trainer/header.html' %}
+{% block title %}
+ONLINE VIDEO
+{% endblock %}
+{% block body %}
+<body>
+<a href="/trainer_online_training_video" class="button-outline-add">add new</a>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        {% for i in ob %}
+            <div class="col-md-4">
+                <div class="card" style="max-width: 18rem;">
+                    <video src="{{ i.video.url }}" class="card-img-top" controls></video>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.video_name }}</h5>
+                        <p class="card-text">{{ i.description }}</p>
+                        <a href="/Trainer_Edit_video/{{ i.id }}" class="button-outline-edit">edit</a>
+                        <a href="/Trainer_Delete_video/{{ i.id }}" class="button-outline-delete">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+
+<style>
+body {
+    background-image: url('/static/trainer/assets/img/gallery/section_bg02.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card {
+    margin: 1em auto;
+}
+table {
+    width: 100%;
+    border-color: #5d6072;
+    color: white;
+}
+.button-outline-add {
+    border: 2px solid deepskyblue; /* Blue outline */
+    background-color: transparent;
+    color: deepskyblue;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.button-outline-add:hover {
+    background-color: deepskyblue;
+    color: white;
+}
+.button-outline-edit {
+    border: 2px solid green; /* Green outline */
+    background-color: transparent;
+    color: green;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.button-outline-edit:hover {
+    background-color: green;
+    color: white;
+}
+.button-outline-delete {
+    border: 2px solid red; /* Red outline */
+    background-color: transparent;
+    color: red;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.button-outline-delete:hover {
+    background-color: red;
+    color: white;
+}
+</style>
+{% endblock %}

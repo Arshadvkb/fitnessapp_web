@@ -1,0 +1,76 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+VIEW EVENTS
+{% endblock %}
+{% block body %}
+<body>
+<div class="container">
+
+<form id="form1" name="form1" method="post" action="/admin_events_post" enctype="multipart/form-data">
+<table width="228" height="201" border="1" cellpadding="4" cellspacing="4">
+  <tr>
+    <th width="73" scope="row">event title </th>
+    <td width="121">
+      <label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" class="text" />
+  </td>
+  </tr>
+  <tr>
+    <th scope="row">event discription </th>
+    <td><input type="text" name="form1" id="textfield2"class="text" /></td>
+  </tr>
+  <tr>
+    <th scope="row">date</th>
+    <td><input type="date" name="textfield3" id="textfield3" class="text"/></td>
+  </tr>
+  <tr>
+    <th scope="row">time</th>
+    <td><input type="time" name="textfield4" id="textfield4"class="text" /></td>
+  </tr>
+  <tr>
+    <th scope="row">picture</th>
+    <td>
+      <input type="file" name="file" id="file" />
+     </td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <label for="Submit"></label>
+  <center>    <input type="submit" name="Submit" value="Submit" id="Submit"class="btn btn-outline-success" /></center>
+
+    </th>
+  </tr>
+
+</table>
+      </form></div>
+
+
+<style>
+
+
+    body{
+        display: grid;
+  grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+  min-height: 100vh;
+        background-image: url('/static/admin/assets/images/contact-bg.jpg');
+        background-repeat: no-repeat;
+        background-size:cover
+
+
+    }
+    table{
+        color: #ed563b;
+        width: 100%;
+        border-color: black;
+    }
+    .text{
+        border-top: transparent;
+        background-color:inherit;
+        border-left: transparent;
+        border-right: transparent;
+        color:#ed563b ;
+
+    }</style>
+</body>
+{% endblock %}

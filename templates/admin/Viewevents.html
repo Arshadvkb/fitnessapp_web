@@ -1,0 +1,66 @@
+
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+VIEW EVENTS
+{% endblock %}
+{% block body %}
+
+<body>
+<div class="container">
+<div class="row  pr-3 mr-3">
+
+    <a href="/admin_events" class="btn btn-outline-success ml-2">Add new</a></div>
+<div class="row pt-4">
+<table width="616" height="80" border="1" cellpadding="4" cellspacing="4">
+
+    <tr>
+    <th width="96" height="29" scope="row">serial no </th>
+    <th hwidth="124">Title</th>
+    <th width="125">Description</th>
+    <th width="101">date</th>
+    <th width="94">Time</th>
+    <th width="94">image</th>
+    <th width="94">manage</th>
+  </tr>
+
+ {% for i in data  %}
+  <tr>
+    <td height="37" scope="row">&nbsp;{{ forloop.counter }}</td>
+     <td>{{ i.eventtitle }}&nbsp;</td>
+    <td>{{ i.eventdescription }}&nbsp;</td>
+    <td>{{ i.date }}&nbsp;</td>
+      <td>{{ i.time }}</td>
+       <td><img src="../media/{{ i.picture }}" width="100px" height="100px"/></td>
+      <td><a href="/admin_edit_events/{{ i.id }}" class="btn btn-outline-primary">Edit </a> <a href="/admin_delete_event/{{ i.id }}" class="btn btn-outline-danger">delet</a></td>
+  </tr>
+      {% endfor %}
+</table>
+</div>
+</div>
+
+
+
+<style>
+    body{
+        display: grid;
+  grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+  min-height: 100vh;
+        background-image: url('/static/admin/assets/images/contact-bg.jpg');
+        background-repeat: no-repeat;
+        background-size:cover
+
+
+    }
+   table{
+       width: 100%;
+       color: #ed563b;
+   }
+    th{
+        background-color: black;
+    }
+
+</style>
+
+</body>
+{% endblock %}

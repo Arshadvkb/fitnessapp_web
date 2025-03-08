@@ -1,0 +1,45 @@
+{% extends 'trainer/header.html' %}
+{% block title %}
+VIEW ATTANDANCE
+{% endblock %}
+{% block body %}
+
+<body>
+  <div class="container">
+<table width="200" border="1">
+  <tr>
+    <td>date</td>
+    <td>name</td>
+    <td>status</td>
+
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ i.date }}</td>
+    <td>&nbsp;{{ i.USER.name }}</td>
+    <td>&nbsp;{{ i.status}}</td>
+
+  </tr>
+{% endfor %}
+</table>
+</div>
+</body>
+
+
+
+    <style>
+    body{
+         background-image: url('/static/trainer/assets/img/gallery/section_bg02.png');
+        background-repeat: no-repeat;
+        background-size:cover
+
+    }
+    table{
+        width: 100%;
+        border-color:#5d6072;
+        color: white;
+    }
+
+
+    </style>
+{% endblock %}

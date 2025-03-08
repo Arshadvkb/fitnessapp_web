@@ -1,0 +1,99 @@
+{% extends 'trainer/header.html' %}
+{% block body %}
+<body>
+
+{% if data %}
+<div class="container">
+    <form name="form1" method="post" action="">
+        {% csrf_token %}
+        <table width="100%" border="1">
+            <thead>
+                <tr>
+                    <th>Work</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Accept</th>
+                    <th>Reject</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                    <tr>
+                        <td>{{ i.work }}</td>
+                        <td>{{ i.date }}</td>
+                        <td>{{ i.time }}</td>
+                        <td><a href="/Trainer_accept_Work/{{ i.id }}" class="button-outline">accept</a></td>
+                        <td><a href="/Trainer_reject_Work/{{ i.id }}" class="button-outline-red">reject</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+</div>
+{% else %}
+    <p id="default">No new work available.</p>
+{% endif %}
+
+</body>
+
+<style>
+ body{
+         background-image: url('/static/trainer/assets/img/gallery/section_bg02.png');
+        background-repeat: no-repeat;
+        background-size:cover
+
+    }
+    table{
+        width: 100%;
+        border-color:#5d6072;
+        color: white;
+    }
+
+.button-outline {
+    border: 2px solid blue; /* Blue outline */
+    background-color: transparent;
+    color: blue;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.button-outline:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+.button-outline-red {
+    border: 2px solid rgb(200, 9, 9); /* Blue outline */
+    background-color: transparent;
+    color: rgb(229, 10, 14);
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+.button-outline-red:hover {
+    background-color: rgb(199, 12, 12);
+    color: white;
+
+}
+#default{
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20%;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'admin/index2.html' %}
+{% block tile %}
+VIEW EXPERT
+{% endblock %}
+{% block body %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <title>VIEW EXPERT</title>
+
+
+
+<body class=""  style="display: grid;
+  grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+  min-height: 100vh;background-image: url('/static/admin/assets/images/contact-bg.jpg');background-repeat: no-repeat;background-size:cover ">
+
+
+
+
+<section>
+<div class="container">
+<div class="row  pr-3 mr-3">
+<p><a href="/admin_add_expert" class="btn btn-outline-success ">Add New</a></p></div>
+<div class="row mt-5">
+<table width="100%" height="80" border="1" cellpadding="4" cellspacing="4" style="color: #ed563b;">
+  <tr>
+    <th width="96" height="29" scope="row">serial no </th>
+    <th width="124">name</th>
+    <th width="125">place</th>
+    <th width="101">phone</th>
+    <th width="101">image</th>
+    <th width="236">manage</th>
+  </tr>
+        {% for i in data  %}
+
+  <tr>
+    <td height="37" scope="row">&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.name }}</td>
+    <td>&nbsp;{{ i.place }}</td>
+    <td>{{ i.phone }}</td>
+    <td><img style="height: 100px;width: 100px" src="{{ i.image.url }}" alt=""></td>
+    <td><a href="/admin_edit_expert/{{ i.id }}" class="btn btn-outline-primary">Edit </a>   <a href="/admin_delete_expert/{{ i.LOGIN.id }}" class="btn btn-outline-danger"> delete</a></td>
+  </tr>
+          {% endfor %}
+
+</table>
+
+</div>
+</div>
+</section>
+
+
+
+
+<style>
+    th{
+        background-color: black;
+    }
+</style>
+
+
+
+
+
+
+
+
+</body>
+{% endblock %}

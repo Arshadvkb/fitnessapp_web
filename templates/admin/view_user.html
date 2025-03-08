@@ -1,0 +1,57 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+VIEW USER
+{% endblock %}
+{% block body %}
+<body>
+<div class="container">
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <th>no</th>
+      <th>image</th>
+      <th>name</th>
+      <th>phone</th>
+      <th>mail</th>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.image.url }}</td>
+      <td>&nbsp;{{ i.name }}</td>
+      <td>&nbsp;{{ i.phone  }}</td>
+      <td>&nbsp;{{ i.email }}</td>
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</div>
+
+
+
+
+<style>
+    body{
+        display: grid;
+  grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+  min-height: 100vh;
+        background-image: url('/static/admin/assets/images/contact-bg.jpg');
+        background-repeat: no-repeat;
+        background-size:cover
+
+
+    }
+   table{
+       width: 100%;
+       color: #ed563b;
+   }
+    th{
+        background-color: black;
+    }
+
+</style>
+</body>
+{% endblock %}

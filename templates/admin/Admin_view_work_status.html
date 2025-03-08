@@ -1,0 +1,52 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+VIEW WORK STATUS
+{% endblock %}
+{% block body %}
+
+<body>
+<div class="container">
+<table width="200" border="1">
+  <tr>
+    <th>trainer</th>
+    <th>work</th>
+    <th>status</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ i.TRAINER.name }}</td>
+    <td>&nbsp;{{ i.work }}</td>
+    <td>&nbsp;{{ i.status }}</td>
+  </tr>
+    {% endfor %}
+</table>
+</div>
+
+
+
+
+
+
+<style>
+    body{
+        display: grid;
+  grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+  min-height: 100vh;
+        background-image: url('/static/admin/assets/images/contact-bg.jpg');
+        background-repeat: no-repeat;
+        background-size:cover
+
+
+    }
+   table{
+       width: 100%;
+       color: #ed563b;
+   }
+    th{
+        background-color: black;
+    }
+
+</style>
+</body>
+{% endblock %}

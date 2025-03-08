@@ -1,0 +1,101 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+ADD EXPERT
+{% endblock %}
+
+{% block body %}
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<section>
+<body>
+<center>
+<div class="container " >
+
+<form id="form1" name="form1" method="post" action="/admin_add_expert_post" enctype="multipart/form-data">
+
+<table width="602" border="1" cellspacing="4" cellpadding="4">
+  <tr>
+    <th width="96" scope="row">Name</th>
+    <td width="187">
+      <input type="text" name="textfield" id="textfield" class="text" />
+     </td>
+    <td width="61">Mail</td>
+    <td width="196"><input type="text" name="textfield5" id="textfield5" class="text" /></td>
+  </tr>
+  <tr>
+    <th scope="row">password</th>
+    <td><input type="text" name="textfield2" id="textfield2" class="text" /></td>
+    <td>confirm</td>
+    <td><input type="text" name="textfield6" id="textfield6" class="text" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Phone</th>
+    <td><input type="text" name="textfield3" id="textfield3" class="text" /></td>
+    <td>DOB</td>
+    <td><input type="date" name="textfield7" id="textfield7" class="text"/></td>
+  </tr>
+  <tr>
+    <th scope="row">Place</th>
+    <td><input type="text" name="textfield4" id="textfield4" class="text" /></td>
+    <td>pin</td>
+    <td> <input type="number" name="pin" id="pin" class="text"/></td>
+  </tr>
+
+  <tr>
+    <th scope="row">Gender</th>
+    <td colspan="3">
+        <input name="radiobutton" type="radio" value="male" id="radiobutton_male" />
+        male
+         <br>
+         <br>
+         <br>
+      <label for="radiobutton"></label>
+      <input name="radiobutton" type="radio" value="female" id="radiobutton_female" />
+    female
+      </td>
+  </tr>
+      <tr>
+    <th scope="row">Image&nbsp;</th>
+    <td><input type="file" name="file" id="file" class="text"/></td>
+
+  </tr>
+
+  <tr></tr>
+    <th colspan="4" scope="row"><center><input type="submit" name="Submit" value="Submit" id="Submit" class="btn btn-outline-success" /></center></th>
+  </tr>
+</table>
+</form>
+</div>
+
+</section>
+
+</center>
+
+<style>
+body{
+    display: grid;
+    grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+    min-height: 100vh;
+    background-image: url('/static/admin/assets/images/contact-bg.jpg');
+    background-repeat: no-repeat;
+    background-size:cover
+}
+table{
+    color: #ed563b;
+    width: 100%;
+    border-color: black;
+}
+.text{
+    border-top: transparent;
+    background-color:inherit;
+    border-left: transparent;
+    border-right: transparent;
+    color:#ed563b ;
+}
+</style>
+
+<script src="../static/admin/assets/js/add_expert_validate.js"></script>
+</body>
+
+{% endblock %}

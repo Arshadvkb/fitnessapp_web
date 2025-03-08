@@ -1,0 +1,37 @@
+{% extends 'trainer/header.html' %}
+{% block body %}
+<body>
+      <form action="/Trainer_Edit_video_Post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        <table width="437" border="1" cellspacing="4" cellpadding="4">
+            <tr>
+                <th>video<br>
+
+<video controls autoplay height="100px" width="100px">
+  <source  src="{{ data.video.url }}"   type="video/mp4" >
+
+</video></th>
+                <td>
+
+ <input type="file" name="file">
+                </td>
+            </tr>
+          <tr>
+            <th width="166" scope="row">name</th>
+            <td width="237"><label for="textfield"></label>
+              <input type="text" name="textfield" id="textfield" value="{{ data.video_name }}"/></td>
+          </tr>
+          <tr>
+            <th scope="row">description</th>
+            <td><label for="textarea"></label>
+              <input type="text" name="textarea" id="textarea" value="{{ data.description }}"></input></td>
+          </tr>
+
+          <tr>
+            <th colspan="2" scope="row"><label for="Submit"></label>
+            <input type="submit" name="Submit" value="Submit" id="Submit" /></th>
+          </tr>
+        </table>
+      </form>
+
+</body>
+{% endblock %}

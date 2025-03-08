@@ -1,0 +1,93 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+EDIT EXPERT
+{% endblock %}
+{% block body %}
+<body>
+<div class="container">
+<form id="form1" name="form1" method="post" action="/admin_edit_expert_post" enctype="multipart/form-data">
+
+
+<table width="602" border="1" cellspacing="4" cellpadding="4">
+  <tr>
+    <th width="96" scope="row">Name</th>
+    <td width="187">
+      <label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield"  value="{{ data.name }}"   class="text"/>
+      </td>
+    <td width="61">Mail</td>
+    <td width="196"><input type="text" name="textfield5" id="textfield5" value="{{ data.email }}"  class="text" /></td>
+  </tr>
+
+  <tr>
+    <th scope="row">Phone</th>
+    <td><input type="text" name="textfield3" id="textfield3" value="{{ data.phone }}" class="text"/></td>
+   <td>&nbsp;pin</td>
+    <td><input type="number" name="pin" value="{{ data.pin }}" class="text"/></td>
+
+  </tr>
+  <tr>
+    <th scope="row">Place</th>
+    <td><input type="text" name="textfield4" id="textfield4" value="{{ data.place }}"  class="text"/></td>
+     <td>image<img src="{{ data.image.url }}" width="100px" height="100px"/> </td><td><input type="file" name="img" ></td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">Gender</th>
+    <td colspan="3">
+
+        <input name="radiobutton" type="radio" value="male" {% if data.gender == "male" %}checked {% endif %} id="radiobutton" />
+        male
+    <br>
+    <br>
+    <br>
+      <label for="radiobutton"></label>
+      <input name="radiobutton" type="radio" value="female" {% if data.gender == "female" %}checked {% endif %}id="radio" />
+    female
+        </td>
+  </tr>
+  <tr>
+    <th colspan="4" scope="row"><center><input type="submit" name="Submit" value="Submit" id="Submit" class="btn btn-outline-success" /></center></th>
+  </tr>
+
+</table>
+
+</form></div>
+
+
+
+
+
+
+
+<style>
+
+     body{
+        display: grid;
+  grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+  min-height: 100vh;
+        background-image: url('/static/admin/assets/images/contact-bg.jpg');
+        background-repeat: no-repeat;
+        background-size:cover
+
+
+    }
+    table{
+        color: #ed563b;
+        width: 100%;
+        border-color: black;
+    }
+    .text{
+        border-top: transparent;
+        background-color:inherit;
+        border-left: transparent;
+        border-right: transparent;
+        color:#ed563b ;
+
+    }
+
+</style>
+</body>
+{% endblock %}

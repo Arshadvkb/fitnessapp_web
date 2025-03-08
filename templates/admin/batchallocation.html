@@ -1,0 +1,78 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+BATCH ALLOCATION
+{% endblock %}
+{% block body %}
+<body>
+<div class="container">
+<form id="form1" name="form1" method="post" action="/admin_batch_allocation_post">
+  <table width="200" border="1" cellspacing="4" cellpadding="4">
+    <tr>
+      <th scope="row">trainer</th>
+      <td><label for="select"></label>
+        <select name="select" id="select" class="text">
+            {% for t in trainer %}
+                <option value="{{ t.id }}">{{ t.name }}</option>
+            {% endfor %}
+        </select></td>
+    </tr>
+    <tr>
+      <th scope="row">user</th>
+      <td><select name="select2" id="select2"  class="text">
+         {% for u in user  %}
+         <option value="{{ u.id }}">{{ u.name }}</option>
+         {% endfor %}
+
+      </select></td>
+    </tr>
+    <tr>
+      <th scope="row">fee</th>
+    <td><input type="nummber" name="textfield4" id="textfield4"  class="text"/></td>
+    </tr>
+    <tr>
+      <th scope="row">from</th>
+    <td><input type="time" name="from" id="textfield5"  class="text"/></td>
+
+  <tr>
+      <th scope="row">to</th>
+    <td><input type="time" name="to" id="textfield5"  class="text"/></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" scope="row"><label for="Submit"></label>
+       <center> <input type="submit" name="Submit" value="Submit" id="Submit"  class="btn btn-outline-success"/></center></th>
+    </tr>
+  </table>
+</form>
+</div>
+
+
+<style>
+    body{
+        display: grid;
+  grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+  min-height: 100vh;
+        background-image: url('/static/admin/assets/images/contact-bg.jpg');
+        background-repeat: no-repeat;
+        background-size:cover
+
+
+    }
+    table{
+        color: #ed563b;
+        width: 100%;
+        border-color: black;
+    }
+    .text{
+        border-top: transparent;
+        background-color:inherit;
+        border-left: transparent;
+        border-right: transparent;
+        color:#ed563b ;
+
+    }
+
+</style>
+</body>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+VIEW TRAINER
+{% endblock %}
+{% block body %}
+<body>
+<div class="container">
+<div class="row">
+<p><a href="admin_ad_trainer" class="btn btn-outline-success">Add New</a></p>
+</div>
+<div class="row pt-5">
+<table width="616" height="80" border="1" cellpadding="4" cellspacing="4">
+  <tr>
+    <th width="96" height="29" scope="row">serial no </th>
+    <th width="124">name</th>
+    <th width="125">place</th>
+    <th width="101">phone</th>
+
+      <th>Image</th>
+      <th width="94">manage trainers</th>
+      <th>allocate</th>
+  </tr>
+    {% for i in data  %}
+
+
+
+  <tr>
+    <td height="37" scope="row">{{ forloop.counter }}</td>
+    <td>{{ i.name }}&nbsp;</td>
+    <td>{{ i.place }}&nbsp;</td>
+    <td>{{ i.phone }}&nbsp;</td>
+      <td><img src="{{ i.image.url }}" width="100px" height="100px"/></td>
+      <td><a href="/admin_edit_trainer/{{ i.id }}" class="btn btn-outline-primary">Edit </a>  <a href="/delete_trainer/{{ i.id }}" class="btn btn-outline-danger">delete</a></td>
+    <td> <a href="/admin_work_allocation/{{ i.id }}" class="btn btn-outline-info">Allocate</a></td>
+  </tr>
+      {% endfor %}
+</table>
+</div>
+</div>
+
+
+
+
+
+
+
+<style>
+    body{
+        display: grid;
+  grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+  min-height: 100vh;
+        background-image: url('/static/admin/assets/images/contact-bg.jpg');
+        background-repeat: no-repeat;
+        background-size:cover
+
+
+    }
+   table{
+       width: 100%;
+       color: #ed563b;
+   }
+    th{
+        background-color: black;
+    }
+
+</style>
+
+
+
+</body>
+{% endblock %}
+
+
+
+

@@ -87,7 +87,6 @@ class Complaint(models.Model):
 class Batch_Allocation(models.Model):
     USER = models.ForeignKey(User, on_delete=models.CASCADE)
     TRAINER = models.ForeignKey(Trainer, on_delete=models.CASCADE)
-    fee=models.FloatField()
     from_time=models.TimeField()
     to_time=models.TimeField()
 

@@ -1,0 +1,52 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+ASSIGN FEES
+{% endblock %}
+
+{% block body %}
+<body>
+    <form id="form1" name="form1" method="post" action="">
+    <div class="container">
+        <div class="row"><h1>ASSIGN FEES</h1></div>
+        <div class="row">
+            <input type="number" id="fees" placeholder="Enter fees">
+        </div>
+        <div class="row pt-3" ></div>
+        <input type="submit" value="Submit" class="btn btn-outline-success">
+             </div>
+    </div>
+    </form>
+    <style>
+        body{
+            display: grid;
+            grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+            min-height: 100vh;
+            background-image: url('/static/admin/assets/images/contact-bg.jpg');
+            background-repeat: no-repeat;
+            background-size:cover
+        }
+        table{
+            width: 100%;
+            color: #ed563b;
+        }
+        th{
+            background-color: black;
+        }
+        h1{
+            color: #ed563b;
+        }
+ input{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ed563b;
+        }
+        
+    </style>
+</body>
+
+
+
+{% endblock %}

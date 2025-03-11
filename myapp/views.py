@@ -358,6 +358,19 @@ def admin_view_complaints(request):
     return render(request,'admin/view_complaints.html',{"data":ob})
 
 
+def admin_assign_fees(req):
+    ob=User.objects.all()
+    return render(req,'admin/assginfees.html',{"data":ob})
+
+
+def admin_assign_fees_post(req,id):
+    fees=req.POST["textfield"]
+    obj=Fees_Payment()
+    obj.USER=User.objects.get(id=id)
+    obj.fees=fees
+    obj.status="pending"
+    obj.save()
+    return HttpResponse('''<script>alert('fees assigned');window.location='/admin_assign_fees'</script>''')
 
 
 

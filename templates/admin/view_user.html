@@ -6,7 +6,6 @@ VIEW USER
 {% block body %}
 <body>
 <div class="container">
-<form id="form1" name="form1" method="post" action="">
   <table width="200" border="1">
     <tr>
       <th>no</th>
@@ -14,6 +13,8 @@ VIEW USER
       <th>name</th>
       <th>phone</th>
       <th>mail</th>
+      <th>Assign fee</th>
+
 
     </tr>
       {% for i in data %}
@@ -23,11 +24,12 @@ VIEW USER
       <td>&nbsp;{{ i.name }}</td>
       <td>&nbsp;{{ i.phone  }}</td>
       <td>&nbsp;{{ i.email }}</td>
+      <td>&nbsp;<a href="/admin_assign_fees/{{data.id}}" class="btn btn-outline-primary">ASSIGN</a></td>
 
     </tr>
       {% endfor %}
   </table>
-</form>
+
 </div>
 
 

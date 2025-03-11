@@ -114,3 +114,4 @@ class Workout(models.Model):
     set=models.IntegerField()
     weight=models.FloatField()
     # name=models.TextField(max_length=100)
+    # user=models.ForeignKey(User,on_delete=models.CASCADE)

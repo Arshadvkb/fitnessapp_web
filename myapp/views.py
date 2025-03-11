@@ -645,6 +645,24 @@ def user_add_diet(req):
     obj.time=time
     obj.save()
     return JsonResponse({'status':'ok'})
+
+
+def user_add_workout(req):
+    print(req.POST)
+    lid=req.POST['lid']
+    workout_name=req.POST['workout_name']
+    reps=req.POST['reps']
+    set=req.POST['set']
+    weight=req.POST['weight']
+    obj=Workout()
+    # obj.USER=User.objects.filter(LOGIN__id=lid).first()
+    # obj.workout=workout_name
+    obj.reps=reps
+    obj.set=set
+    obj.weight=weight
+    obj.save()
+    return JsonResponse({'status':'ok'})
+
        
 
 #  =============================================================================================================================================================      

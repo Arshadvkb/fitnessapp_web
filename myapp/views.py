@@ -632,6 +632,20 @@ def user_home(req):
         })
         return JsonResponse({"status": "ok", "data": a})
        
+def user_add_diet(req):
+    print(req.POST)
+    lid=req.POST['lid']
+    diet_name=req.POST['meal_name']
+    quantity=req.POST['quantity']
+    time=req.POST['time']
+    obj=Diet()
+    obj.USER=User.objects.filter(LOGIN__id=lid).first()
+    obj.food=diet_name
+    obj.quantity=quantity
+    obj.time=time
+    obj.save()
+    return JsonResponse({'status':'ok'})
+       
 
 #  =============================================================================================================================================================      
 #                                             # expert

@@ -68,6 +68,7 @@ urlpatterns = [
     path('user_home',views.user_home),
     path('user_add_diet',views.user_add_diet),
     path('user_add_workout',views.user_add_workout),
+    path('user_sent_complaint',views.user_sent_complaint),
 
 
 

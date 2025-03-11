@@ -663,6 +663,17 @@ def user_add_workout(req):
     obj.save()
     return JsonResponse({'status':'ok'})
 
+
+def user_sent_complaint(req):
+    print(req.POST)
+    lid=req.POST['lid']
+    complaint=req.POST['complaint']
+    obj=Complaint()
+    obj.USER=User.objects.filter(LOGIN__id=lid).first()
+    obj.complaint=complaint
+    obj.date=datetime.now().today()
+    obj.save()
+    return JsonResponse({'status':'ok'})
        
 
 #  =============================================================================================================================================================      

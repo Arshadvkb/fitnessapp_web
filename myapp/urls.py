@@ -49,6 +49,7 @@ urlpatterns = [
     path('Trainer_view_accepted_work',views.Trainer_view_accepted_work),
     path('Admin_fee_pending',views.Admin_fee_pending),
     path('Trainer_completed_work/<id>',views.Trainer_completed_work),
+    path('admin_view_complaints',views.admin_view_complaints),
 
 # ==============================================================================================================
                                         #    FLUTTER

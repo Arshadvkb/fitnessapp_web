@@ -360,7 +360,9 @@ def Admin_fee_pending(req):
     return render(req,'admin/fees.html',{'data':a})
 
 
-
+def admin_view_complaints(request):
+    ob=Complaint.objects.all()
+    return render(request,'admin/view_complaints.html',{"data":ob})
 
 
 

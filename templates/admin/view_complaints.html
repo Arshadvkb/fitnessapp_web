@@ -1,0 +1,60 @@
+{% extends 'admin/index2.html' %}
+
+{% block tile %}
+Complaints
+{% endblock %}
+{% block body %}
+
+<body>
+    <div class="container">
+        <div class="row "><h1>Complaints</h1></div>
+        <div class="row pt-3">
+        <table  border="1">
+            <thead>
+                <tr>
+                    <th>sl.no</th>
+                    
+                    <th>User</th>
+                    <th>Complaint</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for complaint in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    
+                    <td>{{ complaint.USER.name }}</td>
+                    <td>{{ complaint.complaint }}</td>
+                    <td>{{ complaint.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <style>
+        body {
+            display: grid;
+            grid-template-rows: 1fr auto; /* Main content takes available space; footer takes minimal space */
+            min-height: 100vh;
+            background-image: url('/static/admin/assets/images/contact-bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        table {
+            width: 100%;
+            color: #ed563b;
+        }
+        th {
+            background-color: black;
+        }
+        h1 {
+            color: #ed563b;
+           
+        }
+    </style>
+</body>
+
+{% endblock %}

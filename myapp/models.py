@@ -109,7 +109,8 @@ class Diet(models.Model):
     time=models.TimeField()
 
 class Workout(models.Model):
-    # name=models.TextField(max_length=100)
+  
     reps=models.IntegerField()
     set=models.IntegerField()
     weight=models.FloatField()
+    # name=models.TextField(max_length=100)

@@ -138,25 +138,18 @@ def admin_batch_allocation(request):
 def admin_batch_allocation_post(request):
     trainer=request.POST["select"]
     user=request.POST["select2"]
-    fee=request.POST["textfield4"]
+    
     from_time=request.POST["from"]
     to_time=request.POST["to"]
 
     obj=Batch_Allocation()
     obj.USER=User.objects.get(id=user)
     obj.TRAINER=Trainer.objects.get(id=trainer)
-    obj.fee=fee
+   
     obj.from_time=from_time
     obj.to_time=to_time
     obj.save()
 
-    ob=Fees_Payment()
-    ob.fees=fee
-    ob.status='pending'
-    ob.date=datetime.now().today()
-    ob.USER=User.objects.get(id=user)
-    ob.TRAINER=Trainer.objects.get(id=trainer)
-    ob.save()
     return HttpResponse('''<script>alert('new batch added');window.location='/admin_batch_allocation'</script>''')
 
 

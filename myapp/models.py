@@ -102,3 +102,14 @@ class Online_Training(models.Model):
     TRAINER = models.ForeignKey(Trainer, on_delete=models.CASCADE)
     video_name=models.TextField(max_length=100)
     description=models.TextField(max_length=500)
+
+class Diet(models.Model):
+    food=models.TextField(max_length=100)
+    quantity=models.IntegerField()
+    time=models.TimeField()
+
+class Workout(models.Model):
+    # name=models.TextField(max_length=100)
+    reps=models.IntegerField()
+    set=models.IntegerField()
+    weight=models.FloatField()

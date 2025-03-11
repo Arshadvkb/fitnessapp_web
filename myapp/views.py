@@ -510,7 +510,7 @@ def Trainer_completed_work(req,id):
 
 
 def androiod_login_POST(request):
-    print(request.POST,'lllllllllllllllllll')
+    print(request.POST)
     username=request.POST['username']
     password=request.POST['password']
     try:

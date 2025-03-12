@@ -624,7 +624,7 @@ def user_view_time(req):
 def user_home(req):
     lid=req.POST['lid']
     ob=User.objects.get(LOGIN__id=lid)
-    return JsonResponse({'status':'ok','name':ob.name,'place':ob.place,'dob':str(ob.dob),'email':ob.email,'phone':ob.phone,'image':str(ob.image.url)})
+    return JsonResponse({'status':'ok','name':ob.name,'place':ob.place,'dob':str(ob.dob),'email':ob.email,'phone':ob.phone,'image':str(ob.image.url[1:])})
        
 def user_add_diet(req):
     print(req.POST)

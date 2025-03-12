@@ -682,6 +682,19 @@ def user_sent_complaint(req):
     obj.date=datetime.now().today()
     obj.save()
     return JsonResponse({'status':'ok'})
+
+def user_view_health_tip(req):
+    ob = Expert_Health_Tips.objects.all()
+    l = []
+    for i in ob:
+        l.append({
+            'id':i.id,
+            'EXPERT':i.EXPERT.name,
+            'tipstitle':i.tipstitle,
+            'description':i.description,
+            'date':str(i.date),
+        })
+    return JsonResponse({'status':'ok','data':l})
        
 
 #  =============================================================================================================================================================      

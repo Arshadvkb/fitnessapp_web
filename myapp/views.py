@@ -628,7 +628,7 @@ def user_home(req):
 
        if not uid:
         return JsonResponse({"status": "error", "message": "LID is missing"}, status=400)
-       obj = User.objects.filter(USER__LOGIN_id=uid)
+       obj = User.objects.filter(LOGIN_id=uid)
        a = []
        for i in obj:
         a.append({
@@ -638,6 +638,7 @@ def user_home(req):
             'email': i.email,
             'place': i.place,
             'image': str(i.image),
+             'dob': str(i.dob),
         })
         return JsonResponse({"status": "ok", "data": a})
        

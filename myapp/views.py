@@ -696,6 +696,28 @@ def user_view_health_tip(req):
             'date':str(i.date),
         })
     return JsonResponse({'status':'ok','data':l})
+
+def user_view_tracked_diet(req):
+    data = json.loads(req.body)
+    uid = data.get('lid')  # Access 'lid' from the parsed JSON
+
+    if not uid:
+        return JsonResponse({"status": "error", "message": "LID is missing"}, status=400)
+
+    obj = Diet.objects.filter(user__LOGIN_id=uid)
+    a = []
+
+    # Prepare the response data
+    for i in obj:
+        a.append({
+            'id': i.id,
+            'food': i.food,
+            'quantity': i.quantity,
+            'time': str(i.time),
+        })
+    
+    print(a)
+    return JsonResponse({"status": "ok", "data": a})
        
 
 #  =============================================================================================================================================================      

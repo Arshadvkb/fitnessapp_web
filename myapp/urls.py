@@ -73,6 +73,7 @@ urlpatterns = [
     path('user_add_workout',views.user_add_workout),
     path('user_sent_complaint',views.user_sent_complaint),
     path('user_view_health_tip',views.user_view_health_tip),
+    path('user_view_tracked_diet',views.user_view_tracked_diet),
 
 
 

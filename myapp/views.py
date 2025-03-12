@@ -663,8 +663,8 @@ def user_add_workout(req):
     set=req.POST['set']
     weight=req.POST['weight']
     obj=Workout()
-    obj.USER=User.objects.filter(LOGIN__id=lid).first()
-    obj.workout=workout_name
+    obj.user=User.objects.filter(LOGIN__id=lid).first()
+    obj.name=workout_name
     obj.reps=reps
     obj.set=set
     obj.weight=weight

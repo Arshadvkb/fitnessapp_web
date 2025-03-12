@@ -74,6 +74,7 @@ urlpatterns = [
     path('user_sent_complaint',views.user_sent_complaint),
     path('user_view_health_tip',views.user_view_health_tip),
     path('user_view_tracked_diet',views.user_view_tracked_diet),
+    path('user_view_workout',views.user_view_workout),
 
 
 

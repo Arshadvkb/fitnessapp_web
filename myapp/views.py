@@ -718,6 +718,30 @@ def user_view_tracked_diet(req):
     
     print(a)
     return JsonResponse({"status": "ok", "data": a})
+
+
+def user_view_workout(req):
+    data = json.loads(req.body)
+    uid = data.get('lid')  # Access 'lid' from the parsed JSON
+
+    if not uid:
+        return JsonResponse({"status": "error", "message": "LID is missing"}, status=400)
+
+    obj = Workout.objects.filter(user__LOGIN_id=uid)
+    a = []
+
+    # Prepare the response data
+    for i in obj:
+        a.append({
+            'id': i.id,
+            'name': i.name,
+            'reps': i.reps,
+            'set': i.set,
+            'weight': i.weight,
+        })
+    
+    print(a)
+    return JsonResponse({"status": "ok", "data": a})
        
 
 #  =============================================================================================================================================================      

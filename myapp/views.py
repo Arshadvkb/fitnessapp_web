@@ -622,26 +622,9 @@ def user_view_time(req):
 
 
 def user_home(req):
-
-       data = json.loads(req.body)
-       uid = data.get('lid')  # Access 'lid' from the parsed JSON
-
-       if not uid:
-        return JsonResponse({"status": "error", "message": "LID is missing"}, status=400)
-       obj = User.objects.filter(LOGIN_id=uid)
-       a = []
-       for i in obj:
-        a.append({
-            'id': i.id,
-            'name': i.name,
-            'phone': i.phone,
-            'email': i.email,
-            'place': i.place,
-            'image': str(i.image),
-             'email': str(i.dob),
-             'gender':i.gender,
-        })
-        return JsonResponse({"status": "ok", "data": a})
+    lid=req.POST['lid']
+    ob=User.objects.get(LOGIN__id=lid)
+    return JsonResponse({'status':'ok','name':ob.name,'place':ob.place,'dob':str(ob.dob),'email':ob.email,'phone':ob.phone,'image':str(ob.image.url)})
        
 def user_add_diet(req):
     print(req.POST)

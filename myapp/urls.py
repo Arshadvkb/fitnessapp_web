@@ -50,7 +50,7 @@ urlpatterns = [
     path('Admin_fee_pending',views.Admin_fee_pending),
     path('Trainer_completed_work/<id>',views.Trainer_completed_work),
     path('admin_view_complaints',views.admin_view_complaints),
-    path('admin_assign_fees',views.admin_assign_fees),
+    path('admin_assign_fees/<id>',views.admin_assign_fees),
     path('admin_assign_fees_post/<id>',views.admin_assign_fees_post),
 
 # ==============================================================================================================

@@ -358,15 +358,16 @@ def admin_view_complaints(request):
     return render(request,'admin/view_complaints.html',{"data":ob})
 
 
-def admin_assign_fees(req):
-    ob=User.objects.all()
-    return render(req,'admin/assginfees.html',{"data":ob})
+def admin_assign_fees(req,id):
+    request.session['aid']=id
+    return render(req,'admin/assginfees.html')
 
 
-def admin_assign_fees_post(req,id):
+def admin_assign_fees_post(req):
     fees=req.POST["textfield"]
     obj=Fees_Payment()
-    obj.USER=User.objects.get(id=id)
+    obj.USER=User.objects.get(id=request.session['aid'])
+    obj.date=datetime.now().today()
     obj.fees=fees
     obj.status="pending"
     obj.save()

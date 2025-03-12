@@ -56,7 +56,6 @@ class Fees_Payment(models.Model):
     fees = models.BigIntegerField()
     date = models.DateField()
     USER=models.ForeignKey(User,on_delete=models.CASCADE)
-    TRAINER = models.ForeignKey(Trainer, on_delete=models.CASCADE)
     status = models.CharField(max_length=15)
 
 

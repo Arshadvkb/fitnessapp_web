@@ -638,7 +638,8 @@ def user_home(req):
             'email': i.email,
             'place': i.place,
             'image': str(i.image),
-             'dob': str(i.dob),
+             'email': str(i.dob),
+             'gender':i.gender,
         })
         return JsonResponse({"status": "ok", "data": a})
        

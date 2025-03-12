@@ -713,4 +713,32 @@ def expert_helth_tips(request):
         obj.save() 
         return JsonResponse({'status':'ok'})
 
-       
+# ===================================================================================================================   
+#                                           chat    
+def User_viewchat(request):
+    fromid = request.POST["from_id"]
+    toid = request.POST["to_id"]
+    res = Chat.objects.filter(Q(fromid_id=fromid, toid_id=toid) | Q(fromid_id=toid, toid_id=fromid))
+    l = []
+
+    for i in res:
+        l.append({"id": i.id, "msg": i.msg, "from": i.fromid_id, "date": i.date, "to": i.toid_id})
+
+    return JsonResponse({"status":"ok",'data':l})
+
+
+def User_sendchat(request):
+    FROM_id=request.POST['from_id']
+    TOID_id=request.POST['to_id']
+    print(FROM_id)
+    print(TOID_id)
+    msg=request.POST['message']
+
+    from  datetime import datetime
+    c=Chat()
+    c.fromid_id=FROM_id
+    c.toid_id=TOID_id
+    c.msg=msg
+    c.date=datetime.now()
+    c.save()
+    return JsonResponse({'status':"ok"})

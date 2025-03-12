@@ -83,5 +83,9 @@ urlpatterns = [
     path('expert_helth_tips',views.expert_helth_tips),
 
 
-
+# =======================================================================================================================
+                            #    CHAT
+    path('User_viewchat',views.User_viewchat),
+    path('User_sendchat',views.User_sendchat),
+               
 ]

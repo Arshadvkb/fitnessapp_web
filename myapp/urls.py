@@ -84,6 +84,7 @@ urlpatterns = [
 
 
     path('expert_helth_tips',views.expert_helth_tips),
+    path('expert_veiw_user',views.expert_veiw_user),
 
 
 # =======================================================================================================================

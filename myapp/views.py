@@ -764,6 +764,19 @@ def expert_helth_tips(request):
         obj.save() 
         return JsonResponse({'status':'ok'})
 
+def expert_veiw_user(request):
+    ob=User.objects.all()
+    l=[]
+    for i in ob:
+        l.append({
+            'id':i.id,
+            'name':i.name,
+            'email':i.email,
+            'image':str(i.image.url[1:]),
+            'LOGIN':i.LOGIN.id,
+        })
+    return JsonResponse({'status':'ok','data':l})
+
 # ===================================================================================================================   
 #                                           chat    
 

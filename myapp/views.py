@@ -547,7 +547,7 @@ def user_viewvideo(request):
         l.append({
             'id':i.id,
             'TRAINER':i.TRAINER.name,
-            'video':i.video.url,
+            'video':i.video.url[1:],
             'video_name':i.video_name,
             'description':i.description,
 

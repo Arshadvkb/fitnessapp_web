@@ -75,6 +75,7 @@ urlpatterns = [
     path('user_view_health_tip',views.user_view_health_tip),
     path('user_view_tracked_diet',views.user_view_tracked_diet),
     path('user_view_workout',views.user_view_workout),
+    path('user_view_expert',views.user_view_expert),
 
 
 

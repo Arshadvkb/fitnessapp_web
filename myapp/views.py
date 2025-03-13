@@ -541,12 +541,13 @@ def androiod_login_POST(request):
 
 def user_viewvideo(request):
     ob = Online_Training.objects.all()
+
     l = []
     for i in ob:
         l.append({
             'id':i.id,
             'TRAINER':i.TRAINER.name,
-            'video':i.video.url[1:],
+            'video':i.video.url,
             'video_name':i.video_name,
             'description':i.description,
 
@@ -730,6 +731,19 @@ def user_view_workout(req):
     
     print(a)
     return JsonResponse({"status": "ok", "data": a})
+
+
+def user_view_expert(req):
+    ob = Expert.objects.all()
+    l = []
+    for i in ob:
+        l.append({
+            'id':i.id,
+            'name':i.name,
+            'email':i.email,
+            'image':str(i.image.url[1:]),
+        })
+    return JsonResponse({'status':'ok','data':l})
        
 
 #  =============================================================================================================================================================      

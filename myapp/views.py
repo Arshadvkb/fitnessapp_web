@@ -773,7 +773,7 @@ def expert_veiw_user(request):
             'name':i.name,
             'email':i.email,
             'image':str(i.image.url[1:]),
-            'LOGIN':i.LOGIN.id,
+            'LOGIN':str(i.LOGIN.id),
         })
     return JsonResponse({'status':'ok','data':l})
 

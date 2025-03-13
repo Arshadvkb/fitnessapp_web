@@ -741,10 +741,43 @@ def user_view_expert(req):
             'id':i.id,
             'name':i.name,
             'email':i.email,
+            'LOGIN':str(i.LOGIN.id),
             'image':str(i.image.url[1:]),
         })
+    print(l,'---------------')
     return JsonResponse({'status':'ok','data':l})
        
+
+
+def user_viewchat(request):
+    fromid = request.POST["from_id"]
+    toid = request.POST["to_id"]
+    # lmid = request.POST["lastmsgid"]    from django.db.models import Q
+
+    res = Chat.objects.filter(Q(FROMID_id=fromid, TOID_id=toid) | Q(FROMID_id=toid, TOID_id=fromid)).order_by("id")
+    l = []
+
+    for i in res:
+        l.append({"id": i.id, "msg": i.message, "from": i.FROMID_id, "date": i.date, "to": i.TOID_id})
+
+    return JsonResponse({"status":"ok",'data':l})
+
+
+def user_sendchat(request):
+    FROM_id=request.POST['from_id']
+    TOID_id=request.POST['to_id']
+    print(FROM_id)
+    print(TOID_id)
+    msg=request.POST['message']
+
+    from  datetime import datetime
+    c=Chat()
+    c.FROMID_id=FROM_id
+    c.TOID_id=TOID_id
+    c.message=msg
+    c.date=datetime.now()
+    c.save()
+    return JsonResponse({'status':"ok"})
 
 #  =============================================================================================================================================================      
 #                                             # expert
@@ -763,30 +796,3 @@ def expert_helth_tips(request):
 
 # ===================================================================================================================   
 #                                           chat    
-def User_viewchat(request):
-    fromid = request.POST["from_id"]
-    toid = request.POST["to_id"]
-    res = Chat.objects.filter(Q(FROM_id=fromid, TO_id=toid) | Q(FROM_id=toid, TO_id=fromid))
-    l = []
-
-    for i in res:
-        l.append({"id": i.id, "msg": i.message, "from": i.FROM_id, "date": i.date, "to": i.TO_id})
-
-    return JsonResponse({"status":"ok",'data':l})
-
-
-def User_sendchat(request):
-    FROM_id=request.POST['from_id']
-    TOID_id=request.POST['to_id']
-    print(FROM_id)
-    print(TOID_id)
-    msg=request.POST['message']
-
-    from  datetime import datetime
-    c=Chat()
-    c.FROM_id=FROM_id
-    c.TO_id=TOID_id
-    c.message=msg
-    c.date=datetime.now()
-    c.save()
-    return JsonResponse({'status':"ok"})

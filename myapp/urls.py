@@ -88,7 +88,7 @@ urlpatterns = [
 
 # =======================================================================================================================
                             #    CHAT
-    path('User_viewchat',views.User_viewchat),
-    path('User_sendchat',views.User_sendchat),
+    path('user_viewchat',views.user_viewchat),
+    path('user_sendchat',views.user_sendchat),
                
 ]

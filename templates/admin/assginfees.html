@@ -6,11 +6,11 @@ ASSIGN FEES
 
 {% block body %}
 <body>
-    <form id="form1" name="form1" method="post" action="">
+    <form id="form1" name="form1" method="post" action="/admin_assign_fees_post">
     <div class="container">
         <div class="row"><h1>ASSIGN FEES</h1></div>
         <div class="row">
-            <input type="number" id="fees" placeholder="Enter fees">
+            <input type="number" id="fees" placeholder="Enter fees" name="fees" required>
         </div>
         <div class="row pt-3" ></div>
         <input type="submit" value="Submit" class="btn btn-outline-success">

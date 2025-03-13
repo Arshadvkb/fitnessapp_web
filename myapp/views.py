@@ -549,7 +549,9 @@ def user_viewvideo(request):
             'video':i.video.url[1:],
             'video_name':i.video_name,
             'description':i.description,
+
         })
+      
     return JsonResponse({'status':'ok','data':l})
 
 

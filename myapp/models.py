@@ -72,8 +72,8 @@ class Expert_Health_Tips(models.Model):
     description = models.CharField(max_length=200)
     date = models.DateField()
 class Chat(models.Model):
-    FROM=models.ForeignKey(Login,on_delete=models.CASCADE,related_name='from_id')
-    TO = models.ForeignKey(Login, on_delete=models.CASCADE,related_name='to_id')
+    FROM_id=models.ForeignKey(Login,on_delete=models.CASCADE,related_name='from_id')
+    TO_id = models.ForeignKey(Login, on_delete=models.CASCADE,related_name='to_id')
     message=models.CharField(max_length=100)
     date=models.DateField()
 

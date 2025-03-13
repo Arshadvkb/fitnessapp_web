@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from myapp.models import *
 from datetime import datetime
+from django.db.models import Q
 
 
 # Create your views here.
@@ -749,11 +750,11 @@ def expert_helth_tips(request):
 def User_viewchat(request):
     fromid = request.POST["from_id"]
     toid = request.POST["to_id"]
-    res = Chat.objects.filter(Q(fromid_id=fromid, toid_id=toid) | Q(fromid_id=toid, toid_id=fromid))
+    res = Chat.objects.filter(Q(FROM_id=fromid, TO_id=toid) | Q(FROM_id=toid, TO_id=fromid))
     l = []
 
     for i in res:
-        l.append({"id": i.id, "msg": i.msg, "from": i.fromid_id, "date": i.date, "to": i.toid_id})
+        l.append({"id": i.id, "msg": i.message, "from": i.FROM_id, "date": i.date, "to": i.TO_id})
 
     return JsonResponse({"status":"ok",'data':l})
 
@@ -767,9 +768,9 @@ def User_sendchat(request):
 
     from  datetime import datetime
     c=Chat()
-    c.fromid_id=FROM_id
-    c.toid_id=TOID_id
-    c.msg=msg
+    c.FROM_id=FROM_id
+    c.TO_id=TOID_id
+    c.message=msg
     c.date=datetime.now()
     c.save()
     return JsonResponse({'status':"ok"})

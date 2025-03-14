@@ -774,6 +774,13 @@ def user_view_fee_deatils(req):
                 'status':i.status,
             })
       return JsonResponse({'status':'ok','data':l})
+
+
+
+def payment(request):
+    lid=request.POST['lid']
+    sid=request.POST['sid']
+    return JsonResponse({'status':'ok'})
        
 
 

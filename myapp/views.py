@@ -347,6 +347,14 @@ def admin_edit_trainer_post(request):
 
 def admin_view_user(req):
     ob=User.objects.all()
+    for i in ob:
+        p = Fees_Payment.objects.filter(USER__LOGIN_id=i.LOGIN.id,date__month=datetime.now().month,date__year=datetime.now().year).order_by('-id')
+        if p.exists():
+            i.p = "1"
+            print("jj")
+        else:
+            i.p = "0"
+            print("kk")
     return render(req,"admin/view_user.html",{"data":ob})
 
 def Admin_fee_pending(req):

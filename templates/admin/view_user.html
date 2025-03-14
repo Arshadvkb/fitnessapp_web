@@ -25,7 +25,13 @@ VIEW USER
       <td>&nbsp;{{ i.phone  }}</td>
       <td>&nbsp;{{ i.email }}</td>
       <td>&nbsp;
-        <a href="/admin_assign_fees/{{i.id}}" class="btn btn-outline-primary">ASSIGN</a></td>
+        {%if i.p == "0" %}
+          <a href="/admin_assign_fees/{{i.id}}" class="btn btn-outline-primary">ASSIGN</a>
+        
+        {%else%}
+         Already send...
+        {%endif%}
+        </td>
 
     </tr>
       {% endfor %}

@@ -106,7 +106,7 @@ class Diet(models.Model):
     food=models.TextField(max_length=100)
     quantity=models.IntegerField()
     time=models.TimeField()
-    # date=models.DateField()
+    date=models.DateField()
 
 class Workout(models.Model):
   
@@ -115,4 +115,4 @@ class Workout(models.Model):
     weight=models.FloatField()
     name=models.TextField(max_length=100)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    # date=models.DateField()
+    date=models.DateField()

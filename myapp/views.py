@@ -641,6 +641,7 @@ def user_add_diet(req):
     obj.food=diet_name
     obj.quantity=quantity
     obj.time=time
+    obj.date=datetime.now().today()
     obj.save()
     return JsonResponse({'status':'ok'})
 
@@ -658,6 +659,7 @@ def user_add_workout(req):
     obj.reps=reps
     obj.set=set
     obj.weight=weight
+    obj.date=datetime.now().today()
     obj.save()
     return JsonResponse({'status':'ok'})
 
@@ -693,7 +695,7 @@ def user_view_tracked_diet(req):
     if not uid:
         return JsonResponse({"status": "error", "message": "LID is missing"}, status=400)
 
-    obj = Diet.objects.filter(user__LOGIN_id=uid)
+    obj = Diet.objects.filter(user__LOGIN_id=uid,date=datetime.now().today())
     a = []
 
     # Prepare the response data
@@ -716,7 +718,7 @@ def user_view_workout(req):
     if not uid:
         return JsonResponse({"status": "error", "message": "LID is missing"}, status=400)
 
-    obj = Workout.objects.filter(user__LOGIN_id=uid)
+    obj = Workout.objects.filter(user__LOGIN_id=uid,date=datetime.now().today())
     a = []
 
     # Prepare the response data

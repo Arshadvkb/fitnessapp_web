@@ -637,7 +637,7 @@ def user_add_diet(req):
     quantity=req.POST['quantity']
     time=req.POST['time']
     obj=Diet()
-    obj.USER=User.objects.filter(LOGIN__id=lid).first()
+    obj. user=User.objects.filter(LOGIN__id=lid).first()
     obj.food=diet_name
     obj.quantity=quantity
     obj.time=time

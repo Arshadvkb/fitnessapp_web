@@ -779,7 +779,7 @@ def user_view_fee_deatils(req):
 
 def payment(request):
     lid=request.POST['lid']
-    sid=request.POST['sid']
+    Fees_Payment.objects.filter(USER__LOGIN_id=lid,date__month = datetime.now().month,date__year=datetime.now().year).update(status='paid')
     return JsonResponse({'status':'ok'})
        
 

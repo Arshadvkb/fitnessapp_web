@@ -367,12 +367,15 @@ def admin_assign_fees(req,id):
 def admin_assign_fees_post(req):
     fees=req.POST["fees"]
     obj=Fees_Payment()
-    obj.USER=User.objects.get(id=req .session['aid'])
-    obj.date=datetime.now().today()
-    obj.fees=fees
-    obj.status="pending"
-    obj.save()
-    return HttpResponse('''<script>alert('fees assigned');window.location='/admin_view_user'</script>''')
+    if obj.status=="":
+        obj.USER=User.objects.get(id=req .session['aid'])
+        obj.date=datetime.now().today()
+        obj.fees=fees
+        obj.status="pending"
+        obj.save()
+        return HttpResponse('''<script>alert('fees assigned');window.location='/admin_view_user'</script>''')
+    else:
+        return HttpResponse('''<script>alert('fees already assigned');window.location='/admin_view_user'</script>''')
 
 
 

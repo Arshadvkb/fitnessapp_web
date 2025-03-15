@@ -764,7 +764,7 @@ def user_view_fee_deatils(req):
       data = json.loads(req.body)
       uid = data.get('lid') 
       print(uid+'-----------------')
-      ob = Fees_Payment.objects.filter(USER__LOGIN_id=uid)
+      ob = Fees_Payment.objects.filter(USER__LOGIN_id=uid,status='pending')
       l = []
       for i in ob:
             l.append({

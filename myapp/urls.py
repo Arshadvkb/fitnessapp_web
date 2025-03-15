@@ -78,6 +78,7 @@ urlpatterns = [
     path('user_view_expert',views.user_view_expert),
     path('user_view_fee_deatils',views.user_view_fee_deatils),
     path('payment',views.payment),
+    path('user_home_screen_data',views.user_home_screen_data),
 
 
 

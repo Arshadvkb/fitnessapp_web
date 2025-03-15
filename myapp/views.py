@@ -784,6 +784,25 @@ def payment(request):
        
 
 
+def user_home_screen_data(request):
+
+     lid=request.POST['lid']
+     ob=User.objects.get(LOGIN__id=lid)
+     events=Events.objects.all()
+     l=[]
+     for i in events:
+            l.append({
+                'id':i.id,
+                'eventtitle':i.eventtitle,
+                'eventdescription':i.eventdescription,
+                'date':str(i.date),
+                'time':str(i.time),
+                'picture':str(i.picture.url[1:]),
+            })
+
+     return JsonResponse({'status':'ok','name':ob.name,'place':ob.place,'dob':str(ob.dob),'email':ob.email,'phone':ob.phone,'image':str(ob.image.url[1:]) ,'events':l})
+
+
 #  =============================================================================================================================================================      
 #                                             # expert
 def expert_helth_tips(request):

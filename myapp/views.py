@@ -1,6 +1,8 @@
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+
+from myapp.encode_faces import enf
 from myapp.models import *
 from datetime import datetime
 from django.db.models import Q
@@ -604,6 +606,16 @@ def user_register(request):
         obj.weight=weight
         obj.description=description
         obj.save()
+
+
+
+        obx=User.objects.all()
+        result=[]
+        for i in obx:
+            row = [i.id, r'C:\Users\cas\Desktop\fitnessapp_web\fitnessaapp\media\/'+i.image]
+            result.append(row)
+        enf(result)
+
         return JsonResponse({'status':'ok'})
     else:
         return JsonResponse({'status':'invalid'})

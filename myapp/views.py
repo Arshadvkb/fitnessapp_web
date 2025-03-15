@@ -612,7 +612,7 @@ def user_register(request):
         obx=User.objects.all()
         result=[]
         for i in obx:
-            row = [i.id, r'C:\Users\cas\Desktop\fitnessapp_web\fitnessaapp\media\/'+i.image]
+            row = [i.id, r'C:\Users\cas\Desktop\fitnessapp_web\fitnessaapp\media\/'+str(i.image)]
             result.append(row)
         enf(result)
 

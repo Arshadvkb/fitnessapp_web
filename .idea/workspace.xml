@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f02e2e0d-1848-433c-b992-25821c76d2b1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/model/facial_expression_model_weights.h5" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/encode_faces.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/model/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/model/facenet_model.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/model/facial_expression_model_structure.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/model/fer_keras_model_from_autokeras.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/model/haarcascade_frontalface_default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/model/inception_resnet_v1.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/model/inceptionv3_model.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/myapp/recognize_face.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/fitnessaapp.iml" afterPath="$PROJECT_DIR$/.idea/fitnessaapp.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -34,8 +24,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="574" column="31" lean-forward="true" selection-start-line="574" selection-start-column="31" selection-end-line="574" selection-end-column="31" />
+            <state relative-caret-position="232">
+              <caret line="615" column="30" lean-forward="true" selection-start-line="615" selection-start-column="30" selection-end-line="615" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -133,8 +123,8 @@
         <option value="$PROJECT_DIR$/myapp/urls.py" />
         <option value="$PROJECT_DIR$/fitnessaapp/settings.py" />
         <option value="$PROJECT_DIR$/myapp/encode_faces.py" />
-        <option value="$PROJECT_DIR$/myapp/views.py" />
         <option value="$PROJECT_DIR$/fitnessaapp/__init__.py" />
+        <option value="$PROJECT_DIR$/myapp/views.py" />
       </list>
     </option>
   </component>
@@ -436,10 +426,10 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="fitnessaapp.settings" />
+        <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\cas\AppData\Local\Programs\Python\Python36\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -447,7 +437,7 @@
       <module name="fitnessaapp" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
-      <option name="host" value="" />
+      <option name="host" value="0.0.0.0" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -483,9 +473,9 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -677,8 +667,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="574" column="31" lean-forward="true" selection-start-line="574" selection-start-column="31" selection-end-line="574" selection-end-column="31" />
+        <state relative-caret-position="232">
+          <caret line="615" column="30" lean-forward="true" selection-start-line="615" selection-start-column="30" selection-end-line="615" selection-end-column="30" />
           <folding />
         </state>
       </provider>

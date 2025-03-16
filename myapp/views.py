@@ -565,7 +565,7 @@ def user_viewvideo(request):
             'description':i.description,
 
         })
-      
+    print(l)
     return JsonResponse({'status':'ok','data':l})
 
 
@@ -718,7 +718,7 @@ def user_view_tracked_diet(req):
     if not uid:
         return JsonResponse({"status": "error", "message": "LID is missing"}, status=400)
 
-    obj = Diet.objects.filter(user__LOGIN_id=uid)
+    obj = Diet.objects.filter(user__LOGIN_id=uid,date=datetime.now().today())
     a = []
 
     # Prepare the response data
@@ -741,7 +741,7 @@ def user_view_workout(req):
     if not uid:
         return JsonResponse({"status": "error", "message": "LID is missing"}, status=400)
 
-    obj = Workout.objects.filter(user__LOGIN_id=uid)
+    obj = Workout.objects.filter(user__LOGIN_id=uid,date=datetime.now().today())
     a = []
 
     # Prepare the response data

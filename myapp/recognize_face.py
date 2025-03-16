@@ -10,7 +10,7 @@ import pymysql
 from emotion import emotiondet
 
 def iud(qry,val):
-    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='smart_attendance')
+    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2')
     cmd=con.cursor()
     cmd.execute(qry,val)
     id=cmd.lastrowid
@@ -20,7 +20,7 @@ def iud(qry,val):
     return id
 
 def selectone(qry,val):
-    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='smart_attendance',cursorclass=pymysql.cursors.DictCursor)
+    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2',cursorclass=pymysql.cursors.DictCursor)
     cmd=con.cursor()
     cmd.execute(qry,val)
     res=cmd.fetchone()
@@ -28,13 +28,13 @@ def selectone(qry,val):
     return res
 
 def selectall(qry):
-    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='smart_attendance',cursorclass=pymysql.cursors.DictCursor)
+    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2',cursorclass=pymysql.cursors.DictCursor)
     cmd=con.cursor()
     cmd.execute(qry)
     res=cmd.fetchall()
     return res
 def selectall2(qry,val):
-    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='smart_attendance',cursorclass=pymysql.cursors.DictCursor)
+    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2',cursorclass=pymysql.cursors.DictCursor)
     cmd=con.cursor()
     cmd.execute(qry,val)
     res=cmd.fetchall()
@@ -50,7 +50,7 @@ def rec_face_image(imagepath):
 
 	ap = argparse.ArgumentParser()
 
-	data = pickle.loads(open(r'C:\Users\user\PycharmProjects\Smart_Attendance\faces.pickles', "rb").read())
+	data = pickle.loads(open(r'C:\Users\cas\Desktop\fitnessapp_web\fitnessaapp\faces.pickles', "rb").read())
 
 	# load the input image and convert it from BGR to RGB
 	image = cv2.imread(imagepath)

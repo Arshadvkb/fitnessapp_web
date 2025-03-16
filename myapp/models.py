@@ -104,7 +104,7 @@ class Online_Training(models.Model):
 class Diet(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     food=models.TextField(max_length=100)
-    quantity=models.IntegerField()
+    quantity=models.CharField(max_length=100)
     time=models.TimeField()
     date=models.DateField()
 

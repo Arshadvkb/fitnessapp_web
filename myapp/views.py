@@ -2,7 +2,7 @@ from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
-from myapp.encode_faces import enf
+# from myapp.encode_faces import enf
 from myapp.models import *
 from datetime import datetime
 from django.db.models import Q
@@ -612,7 +612,7 @@ def user_register(request):
         obx=User.objects.all()
         result=[]
         for i in obx:
-            row = [i.id, r'C:\Users\cas\Desktop\fitnessapp_web\fitnessaapp\media\/'+str(i.image)]
+            row = [i.id, r'C:\Users\cas\Desktop\fitnessapp_web\fitnessaapp\media/'+str(i.image)]
             result.append(row)
         enf(result)
 
@@ -877,3 +877,43 @@ def user_sendchat(request):
     c.date=datetime.now()
     c.save()
     return JsonResponse({'status':"ok"})
+
+
+import json
+import google.generativeai as genai
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+# Configure Google Gemini API
+GOOGLE_API_KEY = 'AIzaSyB_G0I9odde2-IwZHB1EgHGmBTKaFvSf6Y'  # Replace with your actual API key
+genai.configure(api_key=GOOGLE_API_KEY)
+
+# Initialize Gemini Model
+model = genai.GenerativeModel('gemini-1.5-flash')
+
+@csrf_exempt  # Allows POST requests without CSRF token (Only for testing, secure in production)
+def chatbot_response(request):
+    """
+    Handles user input and generates a response from the Gemini API.
+    """
+    if request.method == 'POST':
+        try:
+            # Parse JSON request body
+            data = json.loads(request.body)
+            user_message = data.get('message', '').strip()
+
+            if not user_message:
+                return JsonResponse({'response': 'Please enter a valid question.'})
+
+            # Generate response from Gemini
+            gemini_response = model.generate_content(user_message)
+
+            # Ensure response is always JSON formatted
+            return JsonResponse({'response': gemini_response.text.strip()})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'response': 'Invalid JSON format.'}, status=400)
+        except Exception as e:
+            return JsonResponse({'response': f'Error: {str(e)}'}, status=500)
+
+    return JsonResponse({'response': 'Invalid request method. Use POST.'}, status=405)

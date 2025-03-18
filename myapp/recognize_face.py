@@ -7,7 +7,7 @@ import argparse
 import pickle
 import cv2
 import pymysql
-from emotion import emotiondet
+
 
 def iud(qry,val):
     con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2')
@@ -54,7 +54,6 @@ def rec_face_image(imagepath):
 
 	# load the input image and convert it from BGR to RGB
 	image = cv2.imread(imagepath)
-	emo=emotiondet(image)
 	#print(image)
 	h,w,ch=image.shape
 
@@ -104,12 +103,11 @@ def rec_face_image(imagepath):
 
 			name = max(counts, key=counts.get)
 			print("result1111111", name)
-	return detected_name,emo
+	return detected_name
 
 
 def camera():
-	hr=input("enter hour")
-	sid=input("enter subject id")
+
 	# import the opencv library
 	import cv2
 
@@ -122,33 +120,19 @@ def camera():
 		# by frame
 		ret, frame = vid.read()
 		cv2.imwrite("sample.png",frame)
-		res,emo=rec_face_image("sample.png")
-		print("emo",emo)
-		for i in res:
-			q="SELECT * FROM `smart_att_attendance_table` WHERE `date`=CURDATE() AND `hour`=%s  AND`student_id`=%s AND `subject_id`=%s"
+		res=rec_face_image("sample.png")
 
-			res=selectall2(q,(hr,i,sid))
+		for i in res:
+			q="SELECT * FROM `myapp_attendance` WHERE  `USER_id`=%s AND `date`=curdate()"
+
+			res=selectall2(q,(i))
 			if len(res)>0:
 				pass
 			else:
-				iud("INSERT INTO `smart_att_attendance_table` VALUES(NULL,CURDATE(),%s,1,%s,%s)",(hr,i,sid))
+				iud("INSERT INTO `myapp_attendance` VALUES(NULL,CURDATE(),'P',%s)",(i))
 				# iud("INSERT INTO `smart_att_depression` VALUES(NULL,CURDATE(),%s,%s,%s)", (hr, emo, sid))
 			print(i,"=====================2")
-			if emo!="neutral":
-				print(emo)
-				try:
-					# q="SELECT *  FROM `smart_att_depression` WHERE `hour`=%s AND `date`=CURDATE() AND STUDENT_id=%s"
-                    #
-					# rs=selectall2(q,(hr,sid))
-					# print(rs, "hhhhhhhhhhhhh")
-					# if rs is None:
-					#   print("ggggggggggggg")
-					  iud("INSERT INTO `smart_att_depression` VALUES(NULL,CURDATE(),%s,%s,%s)",(hr,emo,sid))
-					# else:
-					# 	iud("UPDATE `smart_att_depression` SET `overallscore`=%s WHERE `STUDENT_id`=%s)", (emo, sid))
 
-				except:
-					pass
 		# Display the resulting frame
 		cv2.imshow('frame', frame)
 

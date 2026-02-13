@@ -77,12 +77,13 @@ WSGI_APPLICATION = 'fitnessaapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fitness_app2',
-        'PORT':'3306',
-        'PASSWORD':'123456789',
+        # 'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fitness_app',
+        'PORT':'5432',
+        'PASSWORD':'kickboxer',
         'HOST':'localhost',
-        'USER':'root'
+        'USER':'postgres'
     }
 }
 # Password validation

@@ -879,41 +879,41 @@ def user_sendchat(request):
     return JsonResponse({'status':"ok"})
 
 
-import json
-import google.generativeai as genai
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+# import json
+# import google.generativeai as genai
+# from django.http import JsonResponse
+# from django.views.decorators.csrf import csrf_exempt
 
-# Configure Google Gemini API
-GOOGLE_API_KEY = 'AIzaSyB_G0I9odde2-IwZHB1EgHGmBTKaFvSf6Y'  # Replace with your actual API key
-genai.configure(api_key=GOOGLE_API_KEY)
+# # Configure Google Gemini API
+# GOOGLE_API_KEY = 'AIzaSyB_G0I9odde2-IwZHB1EgHGmBTKaFvSf6Y'  # Replace with your actual API key
+# genai.configure(api_key=GOOGLE_API_KEY)
 
-# Initialize Gemini Model
-model = genai.GenerativeModel('gemini-1.5-flash')
+# # Initialize Gemini Model
+# model = genai.GenerativeModel('gemini-1.5-flash')
 
-@csrf_exempt  # Allows POST requests without CSRF token (Only for testing, secure in production)
-def chatbot_response(request):
-    """
-    Handles user input and generates a response from the Gemini API.
-    """
-    if request.method == 'POST':
-        try:
-            # Parse JSON request body
-            data = json.loads(request.body)
-            user_message = data.get('message', '').strip()
+# @csrf_exempt  # Allows POST requests without CSRF token (Only for testing, secure in production)
+# def chatbot_response(request):
+#     """
+#     Handles user input and generates a response from the Gemini API.
+#     """
+#     if request.method == 'POST':
+#         try:
+#             # Parse JSON request body
+#             data = json.loads(request.body)
+#             user_message = data.get('message', '').strip()
 
-            if not user_message:
-                return JsonResponse({'response': 'Please enter a valid question.'})
+#             if not user_message:
+#                 return JsonResponse({'response': 'Please enter a valid question.'})
 
-            # Generate response from Gemini
-            gemini_response = model.generate_content(user_message)
+#             # Generate response from Gemini
+#             gemini_response = model.generate_content(user_message)
 
-            # Ensure response is always JSON formatted
-            return JsonResponse({'response': gemini_response.text.strip()})
+#             # Ensure response is always JSON formatted
+#             return JsonResponse({'response': gemini_response.text.strip()})
 
-        except json.JSONDecodeError:
-            return JsonResponse({'response': 'Invalid JSON format.'}, status=400)
-        except Exception as e:
-            return JsonResponse({'response': f'Error: {str(e)}'}, status=500)
+#         except json.JSONDecodeError:
+#             return JsonResponse({'response': 'Invalid JSON format.'}, status=400)
+#         except Exception as e:
+#             return JsonResponse({'response': f'Error: {str(e)}'}, status=500)
 
-    return JsonResponse({'response': 'Invalid request method. Use POST.'}, status=405)
+#     return JsonResponse({'response': 'Invalid request method. Use POST.'}, status=405)

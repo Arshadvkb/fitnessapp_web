@@ -6,38 +6,38 @@ import face_recognition
 import argparse
 import pickle
 import cv2
-import pymysql
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
 
 def iud(qry,val):
-    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2')
+    con=psycopg2.connect(host='localhost',port=5432,user='postgres',password='kickboxer',database='fitness_app')
     cmd=con.cursor()
     cmd.execute(qry,val)
-    id=cmd.lastrowid
     con.commit()
     con.close()
 
-    return id
-
 def selectone(qry,val):
-    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2',cursorclass=pymysql.cursors.DictCursor)
-    cmd=con.cursor()
+    con=psycopg2.connect(host='localhost',port=5432,user='postgres',password='kickboxer',database='fitness_app')
+    cmd=con.cursor(cursor_factory=RealDictCursor)
     cmd.execute(qry,val)
     res=cmd.fetchone()
-
+    con.close()
     return res
 
 def selectall(qry):
-    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2',cursorclass=pymysql.cursors.DictCursor)
-    cmd=con.cursor()
+    con=psycopg2.connect(host='localhost',port=5432,user='postgres',password='kickboxer',database='fitness_app')
+    cmd=con.cursor(cursor_factory=RealDictCursor)
     cmd.execute(qry)
     res=cmd.fetchall()
+    con.close()
     return res
 def selectall2(qry,val):
-    con=pymysql.connect(host='localhost',port=3306,user='root',password='123456789',db='fitness_app2',cursorclass=pymysql.cursors.DictCursor)
-    cmd=con.cursor()
+    con=psycopg2.connect(host='localhost',port=5432,user='postgres',password='kickboxer',database='fitness_app')
+    cmd=con.cursor(cursor_factory=RealDictCursor)
     cmd.execute(qry,val)
     res=cmd.fetchall()
+    con.close()
     return res
 
 def rec_face_image(imagepath):
@@ -123,13 +123,13 @@ def camera():
 		res=rec_face_image("sample.png")
 
 		for i in res:
-			q="SELECT * FROM `myapp_attendance` WHERE  `USER_id`=%s AND `date`=curdate()"
+			q="SELECT * FROM myapp_attendance WHERE USER_id=%s AND date=CURRENT_DATE"
 
-			res=selectall2(q,(i))
+			res=selectall2(q,(i,))
 			if len(res)>0:
 				pass
 			else:
-				iud("INSERT INTO `myapp_attendance` VALUES(NULL,CURDATE(),'P',%s)",(i))
+				iud("INSERT INTO myapp_attendance (date, status, USER_id) VALUES(CURRENT_DATE,'P',%s)",(i,))
 				# iud("INSERT INTO `smart_att_depression` VALUES(NULL,CURDATE(),%s,%s,%s)", (hr, emo, sid))
 			print(i,"=====================2")
 
